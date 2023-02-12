@@ -4,7 +4,7 @@ import { randomGridPosition } from './grid.js'
 let food = getRandomFoodPosition()
 const EXPANSION_RATE = 1
 
-
+//updating food
 export function update() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE)
@@ -12,6 +12,7 @@ export function update() {
   }
 }
 
+//set foods on game board
 export function draw(gameBoard) {
   const foodElement = document.createElement('div')
   foodElement.style.gridRowStart = food.y
@@ -20,10 +21,11 @@ export function draw(gameBoard) {
   gameBoard.appendChild(foodElement)
 }
 
+//setting food position
 function getRandomFoodPosition() {
   let newFoodPosition
   while (newFoodPosition == null || onSnake(newFoodPosition)) {
-    newFoodPosition = randomGridPosition()
+    newFoodPosition = randomGridPosition() //calls the randomGridPosition from grid(imported)
   }
   return newFoodPosition
 }

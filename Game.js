@@ -7,6 +7,7 @@ let gameOver = false
 const gameBoard = document.getElementById('game-board')
 
 function main(currentTime) {
+  //game over statement
   if (gameOver) {
     if (confirm('You lost. Press ok to restart.')) {
       window.location = '/'
@@ -28,18 +29,21 @@ function main(currentTime) {
 
 window.requestAnimationFrame(main)
 
+//call and updates the state of the snake and food and death
 function update() {
   updateSnake()
   updateFood()
   checkDeath()
 }
 
+//calls the snake and food and implement to the game board
 function draw() {
   gameBoard.innerHTML = ''
   drawSnake(gameBoard)
   drawFood(gameBoard)
 }
 
+//checks if the snake hit the wall or run into itself
 function checkDeath() {
   gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
 }
